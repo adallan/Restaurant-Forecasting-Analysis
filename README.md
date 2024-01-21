@@ -1,4 +1,4 @@
-#Restaurant Forecasting Analysis (Work in progress)
+# Restaurant Forecasting Analysis (Work in progress)
 
 In spring 2023 had a contract to analyze a restaurant’s sales data to forecast the proceeding year's sales. The stakeholder was most interested in the categorical breakdown for menu items and bar sales, particularly the forecasting of them. It being 2024 now, I thought about what I have learned, how I could have done things better and most importantly how accurate was my forecast?
 
