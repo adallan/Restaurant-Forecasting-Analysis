@@ -56,17 +56,17 @@ def data_extraction(Month):
     df2 = pd.read_csv(base_path+'Receiving Data Folder/'+Month+' '+'2023 Receiving.csv')
     cogs_mask = df2['Category'] == 'Total' 
     COGS = pd.to_numeric(df2[cogs_mask].iat[0,4])
-    Cog_percent = (round(COGS/Net_sales,4)*100)
+    Cog_percent = round(COGS/Net_sales,4)
     
     #Labour data
     df3 = pd.read_csv(base_path+'Payroll Data Folder/'+Month+' '+'2023 Payroll.csv')
     # Remove $, convert to int and then sum the total
     df3_clean = pd.to_numeric((df3['Paid.3'].map(lambda x: x.lstrip('$'))))
     Labour = df3_clean.sum()
-    Labour_percent = (round(Labour/Net_sales,4)*100)
+    Labour_percent = round(Labour/Net_sales,4)
     
     Net_Profit = round(Net_sales - Labour - COGS,2)
-    Profit_margin = round((1-(Labour/Net_sales)-(COGS/Net_sales))*100,2)
+    Profit_margin = round(1-(Labour/Net_sales)-(COGS/Net_sales),4)
     
     return Month, Burger_counts, Burger_sales, Main_menu_counts, Main_menu_sales, Beer_count, Beer_sales, Cocktails_count, Cocktails_sales, Wine_count, Wine_sales, Food_Sales, Bar_sales, Net_sales, COGS, Cog_percent, Labour, Labour_percent, Net_Profit, Profit_margin
 
