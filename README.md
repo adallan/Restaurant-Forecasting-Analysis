@@ -1,4 +1,4 @@
-# Restaurant Forecasting Analysis (Work in progress)
+# Restaurant Forecasting Analysis
 
 In spring 2023 had a contract to analyze a restaurant’s sales data to forecast the proceeding year's sales. The stakeholder was most interested in the categorical breakdown for menu items and bar sales, particularly the forecasting of them. It being 2024 now, I thought about what I have learned, how I could have done things better and most importantly how accurate was my forecast?
 
@@ -12,11 +12,20 @@ The main goal of the contract was to make the business an interactable dashboard
 
 Since completing the contract in the spring of 2023 I learned more about pandas and Python for data analysis. I realized instead of manually importing the data into the master Google Sheets and using VLOOKUP to create the time-series I could have done all those hours of work in a few lines of code. Using pandas with boolean masks I easily grabbed the data I wanted without importing a full sheet for a half dozen of rows I wanted. After this, I stored the data in variables and appended it to a copy of the previous master time-series data set. 
 
-Next steps: 
-1. Formatting the master time-series to be consistent.
-2. New KPIs, analyze and compare the current data to the forecasting.
-3. A new dashboard that can be dynamically updated monthly with the extracting and updating functions created.
-4. Present findings to the stakeholders.
+See here for detailed code for data extraction and appending to master time series: https://github.com/adallan/Restaurant-Forecasting-Analysis/blob/main/data-extraction.py
+
+The next steps included formatting the time-series to be consistent and interact with Tableau properly (ex. data formatting, tableau can mistake the month as day resulting in all data being in January), altering the data source of the dashboard to the new time series and re-adjusting the updated dashboard. Afterwards, new KPIs were created and the new data was analyzed. Using the previous dashboard and the data gathered for 2023 I compared and analyzed all forecasting options and combinations of seasonality to gather a new dataset and analyze which forecasting model was most accurate for the sales data. A new dashboard was generated for this project visualization, altering sales numbers, and food and bar categorized items to anonymize the dashboard and protect the data privacy of the stakeholder's company. 
+
+See here for the anonymized dashboard: https://public.tableau.com/app/profile/alexander.allan/viz/RestaurantSalesForecasting/Dashboard1
+
+Conclusion:
+After comparing and analyzing four forecasting models forecast of Net Sales, Net Profit and Profit Margin of 2023 with the actual data from 2023 I found the following:
+1. Additive Forecasting with No Seaonality (the original forecasting I went with) was pretty off the totals for Net Sales and Net Profit but oddly accurate on the Profit Margin average, this may be because of the incredibly high profit margin of December 2023 (over 10% higher than a normal month and historical data, implying it could be missing data or an outlier)   
+2. Additive Forecasting with Additive Seasonality and Additive Forecasting with Multiplicative Seasonality were incredibly close on most numbers and were by far the more accurate in predicting Net Sales and Net Profit but Additive forecasting with Additive Seasonality was more accurate of the two in predicting Profit Margin.
+3. Multiplicative Forecasting with Multiplicative Seasonality was fairly accurate at predicting Net Profit and Profit Margin but where it fell short of the others was in Net Sales where the model would start to become skewered over the year, being accurate in the first two-quarters numbers would be overinflated by the end of the year.
+
+In conclusion, the Additive forecasting model with Additive seasonality was the most accurate and was used for the updated dashboard for the stakeholders.
+
 
 What I could do further to improve the project:
 1. Deepen the time series to daily instead of monthly.
